@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonShuffle = new System.Windows.Forms.Button();
             this.panelGamefield = new System.Windows.Forms.Panel();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,17 +47,19 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBoxObjective = new System.Windows.Forms.PictureBox();
+            this.buttonLeft4 = new System.Windows.Forms.Button();
+            this.buttonLeft3 = new System.Windows.Forms.Button();
+            this.buttonLeft2 = new System.Windows.Forms.Button();
+            this.buttonLeft1 = new System.Windows.Forms.Button();
+            this.buttonTop4 = new System.Windows.Forms.Button();
+            this.buttonTop3 = new System.Windows.Forms.Button();
+            this.buttonTop2 = new System.Windows.Forms.Button();
+            this.buttonTop1 = new System.Windows.Forms.Button();
             this.labelObjective = new System.Windows.Forms.Label();
+            this.pictureBoxWin = new System.Windows.Forms.PictureBox();
+            this.labelWin = new System.Windows.Forms.Label();
             this.panelGamefield.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,16 +76,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjective)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWin)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonShuffle
             // 
+            this.buttonShuffle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonShuffle.Location = new System.Drawing.Point(469, 71);
             this.buttonShuffle.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShuffle.Name = "buttonShuffle";
             this.buttonShuffle.Size = new System.Drawing.Size(134, 45);
             this.buttonShuffle.TabIndex = 32;
-            this.buttonShuffle.Text = "Перемешать";
+            this.buttonShuffle.Text = "Shuffle field";
             this.buttonShuffle.UseVisualStyleBackColor = true;
             this.buttonShuffle.Click += new System.EventHandler(this.buttonShuffle_Click);
             // 
@@ -111,16 +115,6 @@
             this.panelGamefield.Name = "panelGamefield";
             this.panelGamefield.Size = new System.Drawing.Size(319, 346);
             this.panelGamefield.TabIndex = 34;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Image = global::Lab1.Properties.Resources.objective;
-            this.pictureBox17.Location = new System.Drawing.Point(451, 310);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(113, 107);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox17.TabIndex = 35;
-            this.pictureBox17.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -299,146 +293,175 @@
             this.pictureBox16.TabIndex = 15;
             this.pictureBox16.TabStop = false;
             // 
-            // button16
+            // pictureBoxObjective
             // 
-            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
-            this.button16.Location = new System.Drawing.Point(11, 329);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(57, 81);
-            this.button16.TabIndex = 31;
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.Button16_Click);
-            this.button16.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
-            this.button16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
+            this.pictureBoxObjective.Image = global::Lab1.Properties.Resources.objective;
+            this.pictureBoxObjective.Location = new System.Drawing.Point(469, 310);
+            this.pictureBoxObjective.Name = "pictureBoxObjective";
+            this.pictureBoxObjective.Size = new System.Drawing.Size(134, 107);
+            this.pictureBoxObjective.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxObjective.TabIndex = 35;
+            this.pictureBoxObjective.TabStop = false;
             // 
-            // button15
+            // buttonLeft4
             // 
-            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
-            this.button15.Location = new System.Drawing.Point(11, 243);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(57, 81);
-            this.button15.TabIndex = 30;
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.Button15_Click);
-            this.button15.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
-            this.button15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
+            this.buttonLeft4.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft4.Image")));
+            this.buttonLeft4.Location = new System.Drawing.Point(11, 329);
+            this.buttonLeft4.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLeft4.Name = "buttonLeft4";
+            this.buttonLeft4.Size = new System.Drawing.Size(57, 81);
+            this.buttonLeft4.TabIndex = 31;
+            this.buttonLeft4.UseVisualStyleBackColor = true;
+            this.buttonLeft4.Click += new System.EventHandler(this.movementHandler);
+            this.buttonLeft4.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
+            this.buttonLeft4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
             // 
-            // button14
+            // buttonLeft3
             // 
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.Location = new System.Drawing.Point(11, 157);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(57, 81);
-            this.button14.TabIndex = 29;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.Button14_Click);
-            this.button14.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
-            this.button14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
+            this.buttonLeft3.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft3.Image")));
+            this.buttonLeft3.Location = new System.Drawing.Point(11, 243);
+            this.buttonLeft3.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLeft3.Name = "buttonLeft3";
+            this.buttonLeft3.Size = new System.Drawing.Size(57, 81);
+            this.buttonLeft3.TabIndex = 30;
+            this.buttonLeft3.UseVisualStyleBackColor = true;
+            this.buttonLeft3.Click += new System.EventHandler(this.movementHandler);
+            this.buttonLeft3.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
+            this.buttonLeft3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
             // 
-            // button13
+            // buttonLeft2
             // 
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(11, 71);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(57, 81);
-            this.button13.TabIndex = 28;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.Button13_Click);
-            this.button13.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
-            this.button13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
+            this.buttonLeft2.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft2.Image")));
+            this.buttonLeft2.Location = new System.Drawing.Point(11, 157);
+            this.buttonLeft2.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLeft2.Name = "buttonLeft2";
+            this.buttonLeft2.Size = new System.Drawing.Size(57, 81);
+            this.buttonLeft2.TabIndex = 29;
+            this.buttonLeft2.UseVisualStyleBackColor = true;
+            this.buttonLeft2.Click += new System.EventHandler(this.movementHandler);
+            this.buttonLeft2.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
+            this.buttonLeft2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
             // 
-            // button4
+            // buttonLeft1
             // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(310, 11);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 55);
-            this.button4.TabIndex = 19;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            this.button4.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
-            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
+            this.buttonLeft1.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft1.Image")));
+            this.buttonLeft1.Location = new System.Drawing.Point(11, 71);
+            this.buttonLeft1.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLeft1.Name = "buttonLeft1";
+            this.buttonLeft1.Size = new System.Drawing.Size(57, 81);
+            this.buttonLeft1.TabIndex = 28;
+            this.buttonLeft1.UseVisualStyleBackColor = true;
+            this.buttonLeft1.Click += new System.EventHandler(this.movementHandler);
+            this.buttonLeft1.MouseLeave += new System.EventHandler(this.buttonLeftLeaveHover);
+            this.buttonLeft1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonLeftHover);
             // 
-            // button3
+            // buttonTop4
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(231, 11);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 55);
-            this.button3.TabIndex = 18;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            this.button3.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
-            this.button3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
+            this.buttonTop4.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTop4.Image = ((System.Drawing.Image)(resources.GetObject("buttonTop4.Image")));
+            this.buttonTop4.Location = new System.Drawing.Point(310, 11);
+            this.buttonTop4.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTop4.Name = "buttonTop4";
+            this.buttonTop4.Size = new System.Drawing.Size(75, 55);
+            this.buttonTop4.TabIndex = 19;
+            this.buttonTop4.UseVisualStyleBackColor = false;
+            this.buttonTop4.Click += new System.EventHandler(this.movementHandler);
+            this.buttonTop4.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
+            this.buttonTop4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
             // 
-            // button2
+            // buttonTop3
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(152, 11);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 55);
-            this.button2.TabIndex = 17;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            this.button2.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
-            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
+            this.buttonTop3.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTop3.Image = ((System.Drawing.Image)(resources.GetObject("buttonTop3.Image")));
+            this.buttonTop3.Location = new System.Drawing.Point(231, 11);
+            this.buttonTop3.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTop3.Name = "buttonTop3";
+            this.buttonTop3.Size = new System.Drawing.Size(75, 55);
+            this.buttonTop3.TabIndex = 18;
+            this.buttonTop3.UseVisualStyleBackColor = false;
+            this.buttonTop3.Click += new System.EventHandler(this.movementHandler);
+            this.buttonTop3.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
+            this.buttonTop3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
             // 
-            // button1
+            // buttonTop2
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(72, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 55);
-            this.button1.TabIndex = 16;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            this.button1.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
+            this.buttonTop2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTop2.Image = ((System.Drawing.Image)(resources.GetObject("buttonTop2.Image")));
+            this.buttonTop2.Location = new System.Drawing.Point(152, 11);
+            this.buttonTop2.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTop2.Name = "buttonTop2";
+            this.buttonTop2.Size = new System.Drawing.Size(75, 55);
+            this.buttonTop2.TabIndex = 17;
+            this.buttonTop2.UseVisualStyleBackColor = false;
+            this.buttonTop2.Click += new System.EventHandler(this.movementHandler);
+            this.buttonTop2.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
+            this.buttonTop2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
+            // 
+            // buttonTop1
+            // 
+            this.buttonTop1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTop1.Image = ((System.Drawing.Image)(resources.GetObject("buttonTop1.Image")));
+            this.buttonTop1.Location = new System.Drawing.Point(72, 11);
+            this.buttonTop1.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTop1.Name = "buttonTop1";
+            this.buttonTop1.Size = new System.Drawing.Size(75, 55);
+            this.buttonTop1.TabIndex = 16;
+            this.buttonTop1.UseVisualStyleBackColor = false;
+            this.buttonTop1.Click += new System.EventHandler(this.movementHandler);
+            this.buttonTop1.MouseLeave += new System.EventHandler(this.buttonTopLeaveHover);
+            this.buttonTop1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonTopHover);
             // 
             // labelObjective
             // 
             this.labelObjective.AutoSize = true;
             this.labelObjective.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelObjective.Location = new System.Drawing.Point(456, 283);
+            this.labelObjective.Location = new System.Drawing.Point(465, 283);
             this.labelObjective.Name = "labelObjective";
-            this.labelObjective.Size = new System.Drawing.Size(108, 24);
+            this.labelObjective.Size = new System.Drawing.Size(146, 24);
             this.labelObjective.TabIndex = 36;
-            this.labelObjective.Text = "Цель игры:";
+            this.labelObjective.Text = "Game objective:";
+            // 
+            // pictureBoxWin
+            // 
+            this.pictureBoxWin.Location = new System.Drawing.Point(469, 188);
+            this.pictureBoxWin.Name = "pictureBoxWin";
+            this.pictureBoxWin.Size = new System.Drawing.Size(134, 50);
+            this.pictureBoxWin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxWin.TabIndex = 37;
+            this.pictureBoxWin.TabStop = false;
+            // 
+            // labelWin
+            // 
+            this.labelWin.AutoSize = true;
+            this.labelWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelWin.Location = new System.Drawing.Point(469, 243);
+            this.labelWin.Name = "labelWin";
+            this.labelWin.Size = new System.Drawing.Size(0, 24);
+            this.labelWin.TabIndex = 38;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 463);
+            this.Controls.Add(this.labelWin);
+            this.Controls.Add(this.pictureBoxWin);
             this.Controls.Add(this.labelObjective);
-            this.Controls.Add(this.pictureBox17);
+            this.Controls.Add(this.pictureBoxObjective);
             this.Controls.Add(this.panelGamefield);
             this.Controls.Add(this.buttonShuffle);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonLeft4);
+            this.Controls.Add(this.buttonLeft3);
+            this.Controls.Add(this.buttonLeft2);
+            this.Controls.Add(this.buttonLeft1);
+            this.Controls.Add(this.buttonTop4);
+            this.Controls.Add(this.buttonTop3);
+            this.Controls.Add(this.buttonTop2);
+            this.Controls.Add(this.buttonTop1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
-            this.Text = "Двигаем шарики";
+            this.Text = "Move Balloons";
             this.panelGamefield.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -455,6 +478,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjective)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,18 +503,20 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button buttonTop1;
+        private System.Windows.Forms.Button buttonTop2;
+        private System.Windows.Forms.Button buttonTop3;
+        private System.Windows.Forms.Button buttonTop4;
+        private System.Windows.Forms.Button buttonLeft1;
+        private System.Windows.Forms.Button buttonLeft2;
+        private System.Windows.Forms.Button buttonLeft3;
+        private System.Windows.Forms.Button buttonLeft4;
         private System.Windows.Forms.Button buttonShuffle;
         private System.Windows.Forms.Panel panelGamefield;
-        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pictureBoxObjective;
         private System.Windows.Forms.Label labelObjective;
+        private System.Windows.Forms.PictureBox pictureBoxWin;
+        private System.Windows.Forms.Label labelWin;
     }
 }
 

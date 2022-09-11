@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="sprites\objective.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\win.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

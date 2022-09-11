@@ -124,13 +124,16 @@
   <data name="buttonLeftHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sprites\buttonLeftHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="objective" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sprites\objective.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sprites\buttonTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonTopHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sprites\buttonTopHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="objective" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sprites\objective.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sprites\win.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -28,11 +28,32 @@ namespace Lab1
         {
             InitializeComponent();
             gamefield = panelGamefield.Controls.Cast<PictureBox>().ToList();
-            shuffle_field();
+            shuffleField();
         }
 
+        private void buttonShuffle_Click(object sender, EventArgs e)
+        {
+            shuffleField();
+        }
+
+        /* Change image for every cell on field. */
+        public void redrawField()
+        {
+            int k = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    gamefield[k].Image = Image.FromFile(balloonsPaths[field[i, j]]);
+                    k++;
+                }
+            }
+
+            checkWinCondition();
+        }
+        
         /* Randomly place balloons on field. Not very effective, but it works. */
-        public void shuffle_field()
+        public void shuffleField()
         {
             Random random = new Random();
             int redCount = 0, greenCount = 0, blueCount = 0, purpleCount = 0;
@@ -79,121 +100,77 @@ namespace Lab1
                     }
                 }
             }
-            change_field();
+
+            if (pictureBoxWin.Image != null)
+            {
+                pictureBoxWin.Image = null;
+                labelWin.Text = "";
+            }
+
+            redrawField();
         }
 
-        public void change_field()
+        public void checkWinCondition()
         {
-            int k = 0;
-            for (int i = 0; i < 4; i++)
+            /* Counting values from every cell in 0-3 columns. If sum is not equal to 4 * column we dont need to check further */
+            for (int column = 0; column < 4; column++)
             {
-                for (int j = 0; j < 4; j++)
-                {
-                    gamefield[k].Image = Image.FromFile(balloonsPaths[field[i, j]]);
-                    k++;
-                }
+                int sum = 0;
+                for (int row = 0; row < 4; row++) sum += field[row, column];
+                if (sum != 4 * column) return;
+            }
+
+            /* If we reach this point, we win. */
+            pictureBoxWin.Image = Lab1.Properties.Resources.win;
+            labelWin.Text = "You won!";
+        }
+
+        private void movementHandler(object sender, EventArgs e)
+        {
+            switch ((sender as Button).Name)
+            {
+                case "buttonTop1":
+                    moveColumn(0);
+                    break;
+                case "buttonTop2":
+                    moveColumn(1);
+                    break;
+                case "buttonTop3":
+                    moveColumn(2);
+                    break;
+                case "buttonTop4":
+                    moveColumn(3);
+                    break;
+
+                case "buttonLeft1":
+                    moveRow(0);
+                    break;
+                case "buttonLeft2":
+                    moveRow(1);
+                    break;
+                case "buttonLeft3":
+                    moveRow(2);
+                    break;
+                case "buttonLeft4":
+                    moveRow(3);
+                    break;
             }
         }
 
-        private void buttonShuffle_Click(object sender, EventArgs e)
+        private void moveColumn(int j)
         {
-            shuffle_field();
+            int last = field[0, j];
+            for (int i = 1; i < 4; i++) field[i - 1, j] = field[i, j];
+            field[3, j] = last;
+            redrawField();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void moveRow(int i)
         {
-            int j = 0;
-            int last_element = field[0, j];
-            for (int i = 1; i != 4; ++i)
-            {
-                field[i - 1, j] = field[i, j];
-            }
-            field[3, j] = last_element;
-            change_field();
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            int j = 1;
-            int last_element = field[0, j];
-            for (int i = 1; i != 4; ++i)
-            {
-                field[i - 1, j] = field[i, j];
-            }
-            field[3, j] = last_element;
-            change_field();
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            int j = 2;
-            int last_element = field[0, j];
-            for (int i = 1; i != 4; ++i)
-            {
-                field[i - 1, j] = field[i, j];
-            }
-            field[3, j] = last_element;
-            change_field();
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            int j = 3;
-            int last_element = field[0, j];
-            for (int i = 1; i != 4; ++i)
-            {
-                field[i - 1, j] = field[i, j];
-            }
-            field[3, j] = last_element;
-            change_field();
-        }
-
-        private void Button13_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            int last_element = field[i, 0];
-            for (int j = 1; j != 4; ++j)
-            {
-                field[i, j - 1] = field[i, j];
-            }
-            field[i, 3] = last_element;
-            change_field();
-        }
-
-        private void Button14_Click(object sender, EventArgs e)
-        {
-            int i = 1;
-            int last_element = field[i, 0];
-            for (int j = 1; j != 4; ++j)
-            {
-                field[i, j - 1] = field[i, j];
-            }
-            field[i, 3] = last_element;
-            change_field();
-        }
-
-        private void Button15_Click(object sender, EventArgs e)
-        {
-            int i = 2;
-            int last_element = field[i, 0];
-            for (int j = 1; j != 4; ++j)
-            {
-                field[i, j - 1] = field[i, j];
-            }
-            field[i, 3] = last_element;
-            change_field();
-        }
-
-        private void Button16_Click(object sender, EventArgs e)
-        {
-            int i = 3;
-            int last_element = field[i, 0];
-            for (int j = 1; j != 4; ++j)
-            {
-                field[i, j - 1] = field[i, j];
-            }
-            field[i, 3] = last_element;
-            change_field();
+            int last = field[i, 0];
+            for (int j = 1; j < 4; j++) field[i, j - 1] = field[i, j];
+            field[i, 3] = last;
+            redrawField();
         }
 
         private void buttonTopHover(object sender, MouseEventArgs e)
