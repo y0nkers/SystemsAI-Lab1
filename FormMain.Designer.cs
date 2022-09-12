@@ -59,6 +59,9 @@
             this.labelObjective = new System.Windows.Forms.Label();
             this.pictureBoxWin = new System.Windows.Forms.PictureBox();
             this.labelWin = new System.Windows.Forms.Label();
+            this.buttonFindSolution = new System.Windows.Forms.Button();
+            this.labelSolution = new System.Windows.Forms.Label();
+            this.buttonSolve = new System.Windows.Forms.Button();
             this.panelGamefield.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -86,7 +89,7 @@
             this.buttonShuffle.Location = new System.Drawing.Point(469, 71);
             this.buttonShuffle.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShuffle.Name = "buttonShuffle";
-            this.buttonShuffle.Size = new System.Drawing.Size(134, 45);
+            this.buttonShuffle.Size = new System.Drawing.Size(134, 35);
             this.buttonShuffle.TabIndex = 32;
             this.buttonShuffle.Text = "Shuffle field";
             this.buttonShuffle.UseVisualStyleBackColor = true;
@@ -296,7 +299,7 @@
             // pictureBoxObjective
             // 
             this.pictureBoxObjective.Image = global::Lab1.Properties.Resources.objective;
-            this.pictureBoxObjective.Location = new System.Drawing.Point(469, 310);
+            this.pictureBoxObjective.Location = new System.Drawing.Point(504, 344);
             this.pictureBoxObjective.Name = "pictureBoxObjective";
             this.pictureBoxObjective.Size = new System.Drawing.Size(134, 107);
             this.pictureBoxObjective.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -415,7 +418,7 @@
             // 
             this.labelObjective.AutoSize = true;
             this.labelObjective.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelObjective.Location = new System.Drawing.Point(465, 283);
+            this.labelObjective.Location = new System.Drawing.Point(492, 317);
             this.labelObjective.Name = "labelObjective";
             this.labelObjective.Size = new System.Drawing.Size(146, 24);
             this.labelObjective.TabIndex = 36;
@@ -423,7 +426,7 @@
             // 
             // pictureBoxWin
             // 
-            this.pictureBoxWin.Location = new System.Drawing.Point(469, 188);
+            this.pictureBoxWin.Location = new System.Drawing.Point(469, 234);
             this.pictureBoxWin.Name = "pictureBoxWin";
             this.pictureBoxWin.Size = new System.Drawing.Size(134, 50);
             this.pictureBoxWin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -434,16 +437,51 @@
             // 
             this.labelWin.AutoSize = true;
             this.labelWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelWin.Location = new System.Drawing.Point(469, 243);
+            this.labelWin.Location = new System.Drawing.Point(469, 289);
             this.labelWin.Name = "labelWin";
             this.labelWin.Size = new System.Drawing.Size(0, 24);
             this.labelWin.TabIndex = 38;
+            // 
+            // buttonFindSolution
+            // 
+            this.buttonFindSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonFindSolution.Location = new System.Drawing.Point(469, 117);
+            this.buttonFindSolution.Name = "buttonFindSolution";
+            this.buttonFindSolution.Size = new System.Drawing.Size(134, 35);
+            this.buttonFindSolution.TabIndex = 39;
+            this.buttonFindSolution.Text = "Find Solution";
+            this.buttonFindSolution.UseVisualStyleBackColor = true;
+            this.buttonFindSolution.Click += new System.EventHandler(this.buttonFindSolution_Click);
+            // 
+            // labelSolution
+            // 
+            this.labelSolution.AutoSize = true;
+            this.labelSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSolution.Location = new System.Drawing.Point(469, 160);
+            this.labelSolution.Name = "labelSolution";
+            this.labelSolution.Size = new System.Drawing.Size(0, 24);
+            this.labelSolution.TabIndex = 40;
+            // 
+            // buttonSolve
+            // 
+            this.buttonSolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSolve.Location = new System.Drawing.Point(469, 193);
+            this.buttonSolve.Name = "buttonSolve";
+            this.buttonSolve.Size = new System.Drawing.Size(134, 35);
+            this.buttonSolve.TabIndex = 41;
+            this.buttonSolve.Text = "Solve";
+            this.buttonSolve.UseVisualStyleBackColor = true;
+            this.buttonSolve.Visible = false;
+            this.buttonSolve.Click += new System.EventHandler(this.buttonSolve_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 463);
+            this.Controls.Add(this.buttonSolve);
+            this.Controls.Add(this.labelSolution);
+            this.Controls.Add(this.buttonFindSolution);
             this.Controls.Add(this.labelWin);
             this.Controls.Add(this.pictureBoxWin);
             this.Controls.Add(this.labelObjective);
@@ -517,6 +555,9 @@
         private System.Windows.Forms.Label labelObjective;
         private System.Windows.Forms.PictureBox pictureBoxWin;
         private System.Windows.Forms.Label labelWin;
+        private System.Windows.Forms.Button buttonFindSolution;
+        private System.Windows.Forms.Label labelSolution;
+        private System.Windows.Forms.Button buttonSolve;
     }
 }
 

@@ -104,5 +104,17 @@
   <ItemGroup>
     <None Include="sprites\win.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\red.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
