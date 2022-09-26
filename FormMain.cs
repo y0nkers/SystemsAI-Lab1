@@ -27,14 +27,23 @@ namespace Lab1
 
             public State() { field = new int[4, 4]; parent = null; }
 
-            public State(State Parent, int row, int column)
+            public State(State Parent, int row, int column, bool reversed)
             {
                 field = new int[4, 4];
                 for (int i = 0; i < 4; i++)
                     for (int j = 0; j < 4; j++)
                         field[i, j] = Parent.field[i, j];
-                if (row != -1) moveRow(row);
-                else moveColumn(column);
+                if (row != -1)
+                {
+                    if (reversed) moveRowRight(row);
+                    else moveRowLeft(row);
+                }
+                    
+                else
+                {
+                    if (reversed) moveColumnBottom(column);
+                    else moveColumnTop(column);
+                }
                 parent = Parent;
             }
 
@@ -156,36 +165,61 @@ namespace Lab1
             }
 
             /* Move j column to the top by 1 balloon */
-            public void moveColumn(int j)
+            public void moveColumnTop(int j)
             {
                 int last = field[0, j];
                 for (int i = 1; i < 4; i++) field[i - 1, j] = field[i, j];
                 field[3, j] = last;
             }
 
+            /* Move j column to the bottom by 1 balloon */
+            public void moveColumnBottom(int j)
+            {
+                int first = field[3, j];
+                for (int i = 3; i > 0; i--) field[i, j] = field[i - 1, j];
+                field[0, j] = first;
+            }
+
             /* Move i row to the left by 1 balloon */
-            public void moveRow(int i)
+            public void moveRowLeft(int i)
             {
                 int last = field[i, 0];
                 for (int j = 1; j < 4; j++) field[i, j - 1] = field[i, j];
                 field[i, 3] = last;
             }
 
+            /* Move i row to the right by 1 balloon */
+            public void moveRowRight(int i)
+            {
+                int first = field[i, 3];
+                for (int j = 3; j > 0; j--) field[i, j] = field[i, j - 1];
+                field[i, 0] = first;
+            }
+
             /* Check if two states are equal by comparing fields */
             public static bool operator ==(State A, State B)
             {
+                if (ReferenceEquals(A, B)) return true;
+                if (ReferenceEquals(A, null)) return false;
+                if (ReferenceEquals(B, null)) return false;
+
                 for (int i = 0; i < 4; i++)
                     for (int j = 0; j < 4; j++)
                         if (A.field[i, j] != B.field[i, j]) return false;
                 return true;
             }
 
-            public static bool operator !=(State A, State B)
+            public static bool operator !=(State A, State B) => !(A == B);
+            public override bool Equals(Object other)
             {
+                if (ReferenceEquals(other, null)) return false;
+                if (ReferenceEquals(this, other)) return true;
+
+                var item = other as State;
                 for (int i = 0; i < 4; i++)
                     for (int j = 0; j < 4; j++)
-                        if (A.field[i, j] != B.field[i, j]) return true;
-                return false;
+                        if (field[i, j] != item.field[i, j]) return false;
+                return true;
             }
 
             public Image selectImage(int value)
@@ -266,36 +300,36 @@ namespace Lab1
             switch ((sender as Button).Name)
             {
                 case "buttonTop1":
-                    initial.moveColumn(0);
+                    initial.moveColumnTop(0);
                     initial.redrawField();
                     break;
                 case "buttonTop2":
-                    initial.moveColumn(1);
+                    initial.moveColumnTop(1);
                     initial.redrawField();
                     break;
                 case "buttonTop3":
-                    initial.moveColumn(2);
+                    initial.moveColumnTop(2);
                     initial.redrawField();
                     break;
                 case "buttonTop4":
-                    initial.moveColumn(3);
+                    initial.moveColumnTop(3);
                     initial.redrawField();
                     break;
 
                 case "buttonLeft1":
-                    initial.moveRow(0);
+                    initial.moveRowLeft(0);
                     initial.redrawField();
                     break;
                 case "buttonLeft2":
-                    initial.moveRow(1);
+                    initial.moveRowLeft(1);
                     initial.redrawField();
                     break;
                 case "buttonLeft3":
-                    initial.moveRow(2);
+                    initial.moveRowLeft(2);
                     initial.redrawField();
                     break;
                 case "buttonLeft4":
-                    initial.moveRow(3);
+                    initial.moveRowLeft(3);
                     initial.redrawField();
                     break;
             }
@@ -331,7 +365,7 @@ namespace Lab1
             button.Image = Lab1.Properties.Resources.buttonLeft;
         }
 
-        private void buttonFindSolution_Click(object sender, EventArgs e)
+        private void buttonBFS_Click(object sender, EventArgs e)
         {
             Queue<State> Open = new Queue<State>();
             Queue<State> Close = new Queue<State>();
@@ -361,10 +395,11 @@ namespace Lab1
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 0) childs[i * 4 + j] = new State(current, j, -1);
-                        else childs[i * 4 + j] = new State(current, -1, j);
+                        int idx = i * 4 + j;
+                        if (i == 0) childs[idx] = new State(current, j, -1, false);
+                        else childs[idx] = new State(current, -1, j, false);
 
-                        if (!Close.Contains(childs[i * 4 + j]) && !Open.Contains(childs[i * 4 + j])) Open.Enqueue(childs[i * 4 + j]);
+                        if (!Close.Contains(childs[idx]) && !Open.Contains(childs[idx])) Open.Enqueue(childs[idx]);
                     }
                 }
             }
@@ -379,6 +414,123 @@ namespace Lab1
                 }
                 buttonSolve.Visible = true;
                 
+            }
+            else labelSolution.Text = "Solution not found!";
+        }
+        private void buttonBidirectionalSearch_Click(object sender, EventArgs e)
+        {
+            Queue<State> initialOpen = new Queue<State>();
+            Queue<State> initialClosed = new Queue<State>();
+
+            Queue<State> targetOpen = new Queue<State>();
+            Queue<State> targetClosed = new Queue<State>();
+
+            State target = new State();
+            target.initTargetState();
+
+            bool isSolved = false;
+            State initialCurrent = new State();
+            State targetCurrent = new State();
+            State[] initialChilds = new State[8];
+            State[] targetChilds = new State[8];
+
+            initialOpen.Enqueue(initial);
+            targetOpen.Enqueue(target);
+
+            State savedIntersection = new State();
+
+            while (initialOpen.Count != 0 && targetOpen.Count != 0)
+            {
+                var state = initialOpen.Peek();
+                if (targetOpen.Contains(state))
+                {
+                    savedIntersection = state;
+                    isSolved = true;
+                    break;
+                }
+
+                initialCurrent = initialOpen.Dequeue();
+                targetCurrent = targetOpen.Dequeue();
+                initialClosed.Enqueue(initialCurrent);
+                targetClosed.Enqueue(targetCurrent);
+
+                /* i == 0 for childs with moved row, i == 1 for childs with moved column */
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int idx = i * 4 + j;
+                        if (i == 0)
+                        {
+                            initialChilds[idx] = new State(initialCurrent, j, -1, false);
+                            targetChilds[idx] = new State(targetCurrent, j, -1, true);
+                        }
+                        else
+                        {
+                            initialChilds[idx] = new State(initialCurrent, -1, j, false);
+                            targetChilds[idx] = new State(targetCurrent, -1, j, true);
+                        }
+
+                        if (!initialClosed.Contains(initialChilds[idx]) && !initialOpen.Contains(initialChilds[idx])) initialOpen.Enqueue(initialChilds[idx]);
+                        if (!targetClosed.Contains(targetChilds[idx]) && !targetOpen.Contains(targetChilds[idx])) targetOpen.Enqueue(targetChilds[idx]);
+                    }
+                }
+            }
+
+            if (isSolved)
+            {
+                // Find Intersection from Initial State side
+                State initialIntersection = new State();
+                while (initialOpen.Count > 0)
+                {
+                    initialIntersection = initialOpen.Dequeue();
+                    if (initialIntersection == savedIntersection) 
+                        break;
+                }
+
+                // Find Intersection from Target State side
+                State targetIntersection = new State();
+                while (targetOpen.Count > 0)
+                {
+                    targetIntersection = targetOpen.Dequeue();
+                    if (targetIntersection == savedIntersection) 
+                        break;
+                }
+
+                Stack<State> initialStack = new Stack<State>();
+                while (initialIntersection != null)
+                {
+                    initialStack.Push(initialIntersection);
+                    initialIntersection = initialIntersection.parent;
+                }
+
+                Stack<State> targetStack = new Stack<State>();
+                while (targetIntersection != null)
+                {
+                    targetStack.Push(targetIntersection);
+                    targetIntersection = targetIntersection.parent;
+                }
+
+                List<State> initialList= new List<State>();
+                while (initialStack.Count > 0)
+                    initialList.Add(initialStack.Pop());
+
+                List<State> targetList = new List<State>();
+
+                while (targetStack.Count > 1) // We dont need last element because its already in initialList
+                    targetList.Add(targetStack.Pop());
+                // Reverse list's elements because it was writed from target to intersection
+                targetList.Reverse();
+
+                var combined = initialList.Concat(targetList).ToList();
+                combined.Reverse();
+
+                for (int i = 0; i < combined.Count; i++)
+                    Solver.Push(combined[i]);
+
+                labelSolution.Text = "Solution found!";
+                buttonSolve.Visible = true;
+
             }
             else labelSolution.Text = "Solution not found!";
         }
@@ -398,5 +550,6 @@ namespace Lab1
             myTimer.Start();
             if (Solver.Count < 1) myTimer.Stop();
         }
+
     }
 }
