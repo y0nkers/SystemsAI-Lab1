@@ -627,7 +627,7 @@ namespace MovingTheBalls
                         // Branch 2. If State is in the Open list and its new cost is lower than the old one, then we replace it.
                         else if (opened.Contains(childs[idx]))
                         {
-                            var state = opened.Find(x => x.hCost + x.gCost >= childs[idx].hCost + childs[idx].gCost);
+                            var state = opened.Find(x => (x.hCost + x.gCost >= childs[idx].hCost + childs[idx].gCost) && (x.field == childs[idx].field));
                             if (state != null)
                             {
                                 opened.Remove(state);
@@ -638,7 +638,7 @@ namespace MovingTheBalls
                         // then move it from Closed to Open, replace the old cost with the new one.
                         else if (closed.Contains(childs[idx]))
                         {
-                            var state = closed.Find(x => x.hCost + x.gCost >= childs[idx].hCost + childs[idx].gCost);
+                            var state = closed.Find(x => (x.hCost + x.gCost >= childs[idx].hCost + childs[idx].gCost) && (x.field == childs[idx].field));
                             if (state != null)
                             {
                                 closed.Remove(state);
