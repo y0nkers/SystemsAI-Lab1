@@ -23,7 +23,7 @@ namespace MovingTheBalls
 
             agent = new Agent(initial, target, labelSolution, buttonSolve, textBoxHeuresticStats);
             myTimer.Tick += new EventHandler(DrawSolution);
-            myTimer.Interval = 500;
+            myTimer.Interval = 2000;
         }
 
         /* * * * * Misc Functions * * * * */

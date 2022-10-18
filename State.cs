@@ -51,7 +51,8 @@
                 else MoveColumnTop(column);
             }
             gCost = parent.gCost + 1;
-            hCost = HeuresticCost(HeuristicH1);
+            // hCost = HeuristicCost(HeuristicH1);
+            hCost = HeuristicCost(HeuristicH2);
         }
 
         /* Initialize initial state of field by shuffle balloons */
@@ -253,13 +254,14 @@
             return true;
         }
 
-        public int HeuresticCost(Func<int> function)
+        // Set function for calculate state's heuristic cost 
+        public int HeuristicCost(Func<int> function)
         {
             hCost = function();
             return hCost;
         }
 
-        // Heurestic function h1 (Hamming distance) - counts the number of balls that are out of place
+        // Heuristic function h1 (Hamming distance) - counts the number of balls that are out of place
         public int HeuristicH1()
         {
             int h1 = 0;
@@ -267,6 +269,78 @@
                 for (int row = 0; row < 4; ++row)
                     if (field[row, column] != column) h1++;
             return h1;
+        }
+
+        // Heuristic function h2 (Manhattan distance). For this objective function h2 IS NOT admissible 
+        public int HeuristicH2()
+        {
+            int h2 = 0;
+            for (int color = 0; color < 4; color++)
+            {
+                // 1. Find all balls of current color
+                (int row, int column)[] coordinates = new (int, int)[4];
+                int count = 0;
+                for (int i = 0; i < 4; i++)
+                    for (int j = 0; j < 4; j++)
+                        if (field[i, j] == color) coordinates[count++] = (i, j);
+
+                // 2. Calculate costs for every possible permutation case (4 * 3 * 2 * 1 = 24 cases)
+                int min = -1;
+                foreach(var permutation in Permutations(coordinates))
+                {
+                    int temp = 0;
+                    for (int cell = 0; cell < 4; cell++)
+                    {
+                        // Columns
+                        if (permutation[cell].column == 0 && color == 1) temp += 3; // Green in column 1 => 3 steps
+                        else if (permutation[cell].column == 1 && color == 2) temp += 3; // Blue in column 2 => 3 steps
+                        else if (permutation[cell].column == 0 && color == 3) temp += 1; // Purple in column 1 => 1 step
+                        else temp += Math.Abs(permutation[cell].column - color); // cell.column - color
+
+                        // Rows
+                        if (permutation[cell].row == 0 && cell == 3) temp += 1; // Ball in row 1 going in row 4 => 1 step
+                        else if (permutation[cell].row == 1 && cell == 2) temp += 3; // Ball in row 2 going in row 3 => 3 steps
+                        else if (permutation[cell].row == 2 && cell == 3) temp += 3; // Ball in row 3 going in row 4 => 3 steps
+                        else temp += Math.Abs(permutation[cell].row - cell); // cell.row - cell
+                    }
+                    if (min == -1 || temp < min) min = temp;
+                }
+
+                // 3. Add to the h2 the minimum number of steps for balls of current color
+                h2 += min;
+            }
+            return h2;
+        }
+
+        /* Magic block. Do not touch. 
+         * List of all permutations for 4 balls  */
+        private static IEnumerable<T[]> Permutations<T>(T[] values, int fromInd = 0)
+        {
+            if (fromInd + 1 == values.Length) 
+                yield return values;
+            else
+            {
+                foreach (var v in Permutations(values, fromInd + 1))
+                    yield return v;
+
+                for (var i = fromInd + 1; i < values.Length; i++)
+                {
+                    SwapValues(values, fromInd, i);
+                    foreach (var v in Permutations(values, fromInd + 1))
+                        yield return v;
+                    SwapValues(values, fromInd, i);
+                }
+            }
+        }
+
+        private static void SwapValues<T>(T[] values, int pos1, int pos2)
+        {
+            if (pos1 != pos2)
+            {
+                T tmp = values[pos1];
+                values[pos1] = values[pos2];
+                values[pos2] = tmp;
+            }
         }
     }
 }
