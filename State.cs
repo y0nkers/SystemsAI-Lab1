@@ -51,13 +51,15 @@
                 else MoveColumnTop(column);
             }
             gCost = parent.gCost + 1;
-            // hCost = HeuristicCost(HeuristicH1);
-            hCost = HeuristicCost(HeuristicH2);
+            hCost = HeuristicCost(HeuristicH1);
+            //hCost = HeuristicCost(HeuristicH2);
         }
 
         /* Initialize initial state of field by shuffle balloons */
-        public void InitInitialState(int state)
+        public static State InitInitialState(int predefined)
         {
+            State state = new State();
+
             //Random random = new Random();
             //int redCount = 0, greenCount = 0, blueCount = 0, purpleCount = 0;
 
@@ -72,7 +74,7 @@
             //                if (redCount < 4)
             //                {
             //                    redCount++;
-            //                    field[i, j++] = number;
+            //                    state.field[i, j++] = number;
             //                }
             //                else continue;
             //                break;
@@ -80,7 +82,7 @@
             //                if (greenCount < 4)
             //                {
             //                    greenCount++;
-            //                    field[i, j++] = number;
+            //                    state.field[i, j++] = number;
             //                }
             //                else continue;
             //                break;
@@ -88,7 +90,7 @@
             //                if (blueCount < 4)
             //                {
             //                    blueCount++;
-            //                    field[i, j++] = number;
+            //                    state.field[i, j++] = number;
             //                }
             //                else continue;
             //                break;
@@ -96,7 +98,7 @@
             //                if (purpleCount < 4)
             //                {
             //                    purpleCount++;
-            //                    field[i, j++] = number;
+            //                    state.field[i, j++] = number;
             //                }
             //                else continue;
             //                break;
@@ -106,68 +108,72 @@
 
             for (int column = 0; column < 4; column++)
                 for (int row = 0; row < 4; row++)
-                    field[row, column] = column;
+                    state.field[row, column] = column;
 
-            switch (state)
+            switch (predefined)
             {
                 case 1:
-                    field[0, 0] = 3;
-                    field[0, 1] = 0;
-                    field[0, 2] = 1;
-                    field[0, 3] = 2;
+                    state.field[0, 0] = 3;
+                    state.field[0, 1] = 0;
+                    state.field[0, 2] = 1;
+                    state.field[0, 3] = 2;
 
-                    field[1, 0] = 2;
-                    field[1, 1] = 3;
-                    field[1, 2] = 0;
-                    field[1, 3] = 1;
+                    state.field[1, 0] = 2;
+                    state.field[1, 1] = 3;
+                    state.field[1, 2] = 0;
+                    state.field[1, 3] = 1;
 
-                    field[2, 0] = 2;
-                    field[2, 1] = 3;
-                    field[2, 2] = 0;
-                    field[2, 3] = 1;
+                    state.field[2, 0] = 2;
+                    state.field[2, 1] = 3;
+                    state.field[2, 2] = 0;
+                    state.field[2, 3] = 1;
                     break;
                 case 2:
-                    field[1, 0] = 3;
-                    field[1, 1] = 0;
-                    field[1, 2] = 1;
-                    field[1, 3] = 2;
+                    state.field[1, 0] = 3;
+                    state.field[1, 1] = 0;
+                    state.field[1, 2] = 1;
+                    state.field[1, 3] = 2;
 
-                    field[2, 0] = 1;
-                    field[2, 1] = 2;
-                    field[2, 2] = 3;
-                    field[2, 3] = 0;
+                    state.field[2, 0] = 1;
+                    state.field[2, 1] = 2;
+                    state.field[2, 2] = 3;
+                    state.field[2, 3] = 0;
                     break;
                 case 3:
-                    field[0, 0] = 2;
-                    field[0, 1] = 3;
-                    field[0, 2] = 0;
-                    field[0, 3] = 1;
+                    state.field[0, 0] = 2;
+                    state.field[0, 1] = 3;
+                    state.field[0, 2] = 0;
+                    state.field[0, 3] = 1;
 
-                    field[3, 0] = 1;
-                    field[3, 1] = 2;
-                    field[3, 2] = 3;
-                    field[3, 3] = 0;
+                    state.field[3, 0] = 1;
+                    state.field[3, 1] = 2;
+                    state.field[3, 2] = 3;
+                    state.field[3, 3] = 0;
                     break;
                 case 4:
-                    field[1, 0] = 1;
-                    field[1, 1] = 2;
-                    field[1, 2] = 3;
-                    field[1, 3] = 0;
+                    state.field[1, 0] = 1;
+                    state.field[1, 1] = 2;
+                    state.field[1, 2] = 3;
+                    state.field[1, 3] = 0;
 
-                    field[2, 0] = 2;
-                    field[2, 1] = 3;
-                    field[2, 2] = 0;
-                    field[2, 3] = 1;
+                    state.field[2, 0] = 2;
+                    state.field[2, 1] = 3;
+                    state.field[2, 2] = 0;
+                    state.field[2, 3] = 1;
                     break;
             }
+
+            return state;
         }
 
         /* Initialize target state of field. */
-        public void InitTargetState()
+        public static State InitTargetState()
         {
+            State state = new State();
             for (int column = 0; column < 4; column++)
                 for (int row = 0; row < 4; row++)
-                    field[row, column] = column;
+                    state.field[row, column] = column;
+            return state;
         }
 
         /* Move j column to the top by 1 balloon */
@@ -286,7 +292,7 @@
 
                 // 2. Calculate costs for every possible permutation case (4 * 3 * 2 * 1 = 24 cases)
                 int min = -1;
-                foreach(var permutation in Permutations(coordinates))
+                foreach (var permutation in Permutations(coordinates))
                 {
                     int temp = 0;
                     for (int cell = 0; cell < 4; cell++)
@@ -312,11 +318,52 @@
             return h2;
         }
 
+        /// <summary>
+        /// Generates a state from which the target can be exactly reached in the specified number of steps. 
+        /// Does not guarantee that the specified solution depth will be optimal
+        /// </summary>
+        /// <param name="depth">Path length from generated state to target state</param>
+        /// <param name="target">Target state from which generation occurs</param>
+        /// <returns>Generated state with specified depth</returns>
+        public static State GenerateState(int depth, State target)
+        {
+            if (depth < 1) return InitTargetState();
+
+            State current = target;
+            List<State> usedStates = new List<State>();
+            usedStates.Add(current);
+            State[] childs = new State[8];
+
+            for (int d = 0; d < depth; ++d)
+            {
+                /* i == 0 for childs with moved row, i == 1 for childs with moved column */
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int idx = i * 4 + j;
+                        if (i == 0) childs[idx] = new State(current, j, -1, true);
+                        else childs[idx] = new State(current, -1, j, true);
+                    }
+                }
+                Random rand = new Random((int)DateTime.Now.Ticks);
+                int num;
+                do num = rand.Next(0, 7);
+                while (usedStates.Contains(childs[num]));
+                current = childs[num];
+                usedStates.Add(current);
+            }
+            current.gCost = 0;
+            current.hCost = 0;
+            current.parent = null;
+            return current;
+        }
+
         /* Magic block. Do not touch. 
          * List of all permutations for 4 balls  */
         private static IEnumerable<T[]> Permutations<T>(T[] values, int fromInd = 0)
         {
-            if (fromInd + 1 == values.Length) 
+            if (fromInd + 1 == values.Length)
                 yield return values;
             else
             {

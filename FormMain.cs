@@ -16,20 +16,20 @@ namespace MovingTheBalls
 
             int number = random.Next(1, 5);
             State initial = new State();
-            State target = new State();
-            initial.InitInitialState(number);
-            target.InitTargetState();
+            State target = State.InitTargetState();
+            //initial = State.InitInitialState(number);
+            initial = State.GenerateState(5, target);
             RedrawField(initial.Field);
 
-            agent = new Agent(initial, target, labelSolution, buttonSolve, textBoxHeuresticStats);
+            agent = new Agent(initial, target, labelSolution, buttonSolve, textBoxSolutionStats);
             myTimer.Tick += new EventHandler(DrawSolution);
-            myTimer.Interval = 2000;
+            myTimer.Interval = 500;
         }
 
         /* * * * * Misc Functions * * * * */
 
         // Redraw field after change balls positions
-        public void RedrawField(int[,] field)
+        public static void RedrawField(int[,] field)
         {
             int k = 0;
             for (int i = 0; i < 4; i++)
@@ -68,6 +68,7 @@ namespace MovingTheBalls
                     labelHCost.Text = "Current H cost: " + state.HCost;
                 }
             }
+            if (solver.Count < 1) myTimer.Stop();
         }
 
         /* * * * * Buttons * * * * */
@@ -76,7 +77,7 @@ namespace MovingTheBalls
         private void ButtonShuffle_Click(object sender, EventArgs e)
         {
             int number = random.Next(1, 5);
-            agent.State.InitInitialState(number);
+            agent.State = State.InitInitialState(number);
             if (pictureBoxWin.Image != null)
             {
                 pictureBoxWin.Image = null;
@@ -88,7 +89,6 @@ namespace MovingTheBalls
         private void ButtonSolve_Click(object sender, EventArgs e)
         {
             myTimer.Start();
-            if (agent.getSolver().Count < 1) myTimer.Stop();
         }
 
         private void AlgorithmHandler(object sender, EventArgs e)
@@ -96,13 +96,13 @@ namespace MovingTheBalls
             switch (((Button)sender).Name)
             {
                 case "buttonBFS":
-                    agent.BFS();
+                    agent.Run(agent.BFS);
                     break;
                 case "buttonBidirectionalSearch":
-                    agent.BidirectionalSearch();
+                    agent.Run(agent.BidirectionalSearch);
                     break;
                 case "buttonHeuristicSearch":
-                    agent.HeuristicSearch();
+                    agent.Run(agent.HeuristicSearch);
                     break;
             }
         }

@@ -65,7 +65,7 @@
             this.labelGCost = new System.Windows.Forms.Label();
             this.labelHCost = new System.Windows.Forms.Label();
             this.buttonHeuristicSearch = new System.Windows.Forms.Button();
-            this.textBoxHeuresticStats = new System.Windows.Forms.TextBox();
+            this.textBoxSolutionStats = new System.Windows.Forms.TextBox();
             this.panelGamefield.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,9 +89,8 @@
             // 
             // buttonShuffle
             // 
-            this.buttonShuffle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShuffle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonShuffle.Location = new System.Drawing.Point(508, 13);
+            this.buttonShuffle.Location = new System.Drawing.Point(712, 11);
             this.buttonShuffle.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShuffle.Name = "buttonShuffle";
             this.buttonShuffle.Size = new System.Drawing.Size(120, 50);
@@ -303,9 +302,9 @@
             // 
             // pictureBoxObjective
             // 
-            this.pictureBoxObjective.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxObjective.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxObjective.Image = global::MovingTheBalls.Properties.Resources.objective;
-            this.pictureBoxObjective.Location = new System.Drawing.Point(601, 354);
+            this.pictureBoxObjective.Location = new System.Drawing.Point(676, 358);
             this.pictureBoxObjective.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBoxObjective.Name = "pictureBoxObjective";
             this.pictureBoxObjective.Size = new System.Drawing.Size(156, 123);
@@ -423,10 +422,10 @@
             // 
             // labelObjective
             // 
-            this.labelObjective.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelObjective.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelObjective.AutoSize = true;
             this.labelObjective.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjective.Location = new System.Drawing.Point(587, 323);
+            this.labelObjective.Location = new System.Drawing.Point(676, 331);
             this.labelObjective.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelObjective.Name = "labelObjective";
             this.labelObjective.Size = new System.Drawing.Size(146, 24);
@@ -435,8 +434,7 @@
             // 
             // pictureBoxWin
             // 
-            this.pictureBoxWin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxWin.Location = new System.Drawing.Point(462, 423);
+            this.pictureBoxWin.Location = new System.Drawing.Point(470, 428);
             this.pictureBoxWin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBoxWin.Name = "pictureBoxWin";
             this.pictureBoxWin.Size = new System.Drawing.Size(131, 53);
@@ -446,10 +444,9 @@
             // 
             // labelWin
             // 
-            this.labelWin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelWin.AutoSize = true;
             this.labelWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelWin.Location = new System.Drawing.Point(474, 400);
+            this.labelWin.Location = new System.Drawing.Point(470, 396);
             this.labelWin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelWin.Name = "labelWin";
             this.labelWin.Size = new System.Drawing.Size(0, 20);
@@ -457,9 +454,8 @@
             // 
             // buttonBFS
             // 
-            this.buttonBFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBFS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonBFS.Location = new System.Drawing.Point(638, 12);
+            this.buttonBFS.Location = new System.Drawing.Point(471, 11);
             this.buttonBFS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonBFS.Name = "buttonBFS";
             this.buttonBFS.Size = new System.Drawing.Size(120, 50);
@@ -470,10 +466,9 @@
             // 
             // labelSolution
             // 
-            this.labelSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSolution.AutoSize = true;
             this.labelSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSolution.Location = new System.Drawing.Point(508, 137);
+            this.labelSolution.Location = new System.Drawing.Point(712, 70);
             this.labelSolution.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSolution.Name = "labelSolution";
             this.labelSolution.Size = new System.Drawing.Size(0, 20);
@@ -481,9 +476,8 @@
             // 
             // buttonSolve
             // 
-            this.buttonSolve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSolve.Location = new System.Drawing.Point(508, 68);
+            this.buttonSolve.Location = new System.Drawing.Point(712, 93);
             this.buttonSolve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonSolve.Name = "buttonSolve";
             this.buttonSolve.Size = new System.Drawing.Size(120, 50);
@@ -495,9 +489,8 @@
             // 
             // buttonBidirectionalSearch
             // 
-            this.buttonBidirectionalSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBidirectionalSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonBidirectionalSearch.Location = new System.Drawing.Point(639, 67);
+            this.buttonBidirectionalSearch.Location = new System.Drawing.Point(471, 67);
             this.buttonBidirectionalSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonBidirectionalSearch.Name = "buttonBidirectionalSearch";
             this.buttonBidirectionalSearch.Size = new System.Drawing.Size(120, 50);
@@ -508,29 +501,26 @@
             // 
             // labelGCost
             // 
-            this.labelGCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGCost.AutoSize = true;
             this.labelGCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelGCost.Location = new System.Drawing.Point(462, 216);
+            this.labelGCost.Location = new System.Drawing.Point(597, 123);
             this.labelGCost.Name = "labelGCost";
             this.labelGCost.Size = new System.Drawing.Size(0, 20);
             this.labelGCost.TabIndex = 43;
             // 
             // labelHCost
             // 
-            this.labelHCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHCost.AutoSize = true;
             this.labelHCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelHCost.Location = new System.Drawing.Point(462, 245);
+            this.labelHCost.Location = new System.Drawing.Point(597, 153);
             this.labelHCost.Name = "labelHCost";
             this.labelHCost.Size = new System.Drawing.Size(0, 20);
             this.labelHCost.TabIndex = 44;
             // 
             // buttonHeuristicSearch
             // 
-            this.buttonHeuristicSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonHeuristicSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonHeuristicSearch.Location = new System.Drawing.Point(639, 122);
+            this.buttonHeuristicSearch.Location = new System.Drawing.Point(471, 123);
             this.buttonHeuristicSearch.Name = "buttonHeuristicSearch";
             this.buttonHeuristicSearch.Size = new System.Drawing.Size(120, 50);
             this.buttonHeuristicSearch.TabIndex = 45;
@@ -538,25 +528,24 @@
             this.buttonHeuristicSearch.UseVisualStyleBackColor = true;
             this.buttonHeuristicSearch.Click += new System.EventHandler(this.AlgorithmHandler);
             // 
-            // textBoxHeuresticStats
+            // textBoxSolutionStats
             // 
-            this.textBoxHeuresticStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxHeuresticStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxHeuresticStats.Location = new System.Drawing.Point(461, 269);
-            this.textBoxHeuresticStats.Multiline = true;
-            this.textBoxHeuresticStats.Name = "textBoxHeuresticStats";
-            this.textBoxHeuresticStats.ReadOnly = true;
-            this.textBoxHeuresticStats.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxHeuresticStats.Size = new System.Drawing.Size(296, 51);
-            this.textBoxHeuresticStats.TabIndex = 46;
-            this.textBoxHeuresticStats.Visible = false;
+            this.textBoxSolutionStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSolutionStats.Location = new System.Drawing.Point(471, 185);
+            this.textBoxSolutionStats.Multiline = true;
+            this.textBoxSolutionStats.Name = "textBoxSolutionStats";
+            this.textBoxSolutionStats.ReadOnly = true;
+            this.textBoxSolutionStats.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxSolutionStats.Size = new System.Drawing.Size(361, 143);
+            this.textBoxSolutionStats.TabIndex = 46;
+            this.textBoxSolutionStats.Visible = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 491);
-            this.Controls.Add(this.textBoxHeuresticStats);
+            this.ClientSize = new System.Drawing.Size(844, 490);
+            this.Controls.Add(this.textBoxSolutionStats);
             this.Controls.Add(this.buttonHeuristicSearch);
             this.Controls.Add(this.labelHCost);
             this.Controls.Add(this.labelGCost);
@@ -580,6 +569,8 @@
             this.Controls.Add(this.buttonTop1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(864, 533);
+            this.MinimumSize = new System.Drawing.Size(864, 533);
             this.Name = "FormMain";
             this.Text = "Move Balloons";
             this.panelGamefield.ResumeLayout(false);
@@ -645,6 +636,6 @@
         private Button buttonHeuristicSearch;
         private Button buttonSolve;
         private Label labelSolution;
-        private TextBox textBoxHeuresticStats;
+        private TextBox textBoxSolutionStats;
     }
 }
